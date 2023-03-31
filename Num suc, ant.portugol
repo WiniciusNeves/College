@@ -1,0 +1,18 @@
+# faculty
+code i learned in college
+programa {
+  funcao inicio() {
+  inteiro num
+
+	escreva("informe um número para obter seu antecessor e sucessor\n")
+	leia(num)
+	
+	escreva("o numero é ", num)
+	
+	escreva("\no antecessor é ", num - 1)
+	
+	escreva("\no sucessor é ", num + 1)
+
+  }
+}
+
