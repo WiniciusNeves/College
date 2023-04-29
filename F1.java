@@ -60,13 +60,6 @@ public class Main {
 		System.out.println("este e a diferença entre o ultimo e o primeiro: "+(voltaMR - voltaML));
 		
 		
-		
-		
-		
-		
-		
-		
-		
 	
 	}
 
