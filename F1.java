@@ -57,7 +57,7 @@ public class Main {
 		System.out.println("este e a volta do Segundo carro mais rapido: "+voltaSMR);
 		System.out.println("este e a volta do Terceiro carro mais rapido: "+voltaTMR);
 		System.out.println("esta e sua media em segundos: "+ media/10);
-		System.out.println("este e a diferença entre o ultimo e o primeiro: "+(voltaMR - voltaML));
+		System.out.println("este e a diferença entre o ultimo e o primeiro: "+(voltaML - voltaMR ));
 		
 		
 	
