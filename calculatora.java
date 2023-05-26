@@ -68,5 +68,15 @@ public class Main {
 		    int resultado = num1 / num2;
 		    return resultado;
 	    }
-
+	    
+	    private static boolean erro (int resultado ) {
+		    if (resultado >= 300) {
+		    	return true;
+		    }
+		    else 
+		    	return false;
+		    }
+		    
+	    
+	    
 }
