@@ -5,6 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 Scanner scanner = new Scanner(System.in);
+		int resultado = 0;
 	     System.out.println("digite a operação que deseja:");
 	     System.out.println("1 - Soma");
 	     System.out.println("2 - Subtração");
@@ -43,10 +44,17 @@ public class Main {
 	                break;
 	        
 	            default:
+				System.out.println("operacao invalida");
 	                break;
 	        }
-	        
+	        if(validarResultado(resultado)){
+			System.out.printl("o resultado é "+ resultado)
+		}
+		else{
+			System.out.println("o resultado nao e valido")
+		}
 	}
+	
 	        
 
 	    private static int somar(int num1, int num2) {
