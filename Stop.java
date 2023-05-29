@@ -1,19 +1,19 @@
+package br.cm.unicuritiba;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Main {
-    private static final int EASY_TIME_LIMIT = 30; // facil
-    private static final int MEDIUM_TIME_LIMIT = 20; // medio
-    private static final int HARD_TIME_LIMIT = 10; // dificio
+    private static final int Facil = 240; //modo facil
+    private static final int Medio = 120; //modo médio
+    private static final int Dificio = 60; //modo dificil
 
     public static void main(String[] args) {
         System.out.print("Informe o número de categorias para o stop: ");
         Scanner scanner = new Scanner(System.in);
         int numcat = scanner.nextInt();
         scanner.nextLine();
-
         String[] categorias = new String[numcat];
         for (int i = 0; i < numcat; i++) {
             System.out.print("Insira o nome da categoria: ");
@@ -33,17 +33,22 @@ public class Main {
             @Override
             public void run() {
                 if (timeLimit > 0) {
-                    System.out.println("Tempo restante: " + timeLimit + " segundos");
-                    timeLimit--;
+                    System.out.println("\nTempo restante: " + timeLimit + " segundos");
+                    try {
+						Thread.sleep(10000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+                    timeLimit=timeLimit-10;
                 } else {
-                    System.out.println("Tempo esgotado!");
+                    System.out.println("Acabou o tempo esgotado!");
                     timer.cancel();
                     scanner.close();
                     System.exit(0);
                 }
             }
         };
-        timer.scheduleAtFixedRate(task, 1000, 1000);
+        timer.scheduleAtFixedRate(task, 10000, 10000);
 
         for (int j = 0; j < numcat; j++) {
             System.out.print(categorias[j] + ": ");
@@ -53,24 +58,19 @@ public class Main {
 
         timer.cancel();
         scanner.close();
-        System.out.print("Preencheu todas as categorias e quer dar stop? 1- Sim\n 2- Não\n");
-        int x = scanner.nextInt();
-
-        if (x == 1) {
-            System.out.print("Stop!");
-        } else {
-            System.out.print("Perdeu!");
+   
+        System.out.println("Stoppp, Parabens voce ganhou, chegou no potion");
+        
         }
-    }
 
     private static int getTimeLimit(int numcat) {
         int timeLimit;
         if (numcat <= 3) {
-            timeLimit = EASY_TIME_LIMIT;
+            timeLimit = Facil;
         } else if (numcat <= 6) {
-            timeLimit = MEDIUM_TIME_LIMIT;
+            timeLimit = Medio;
         } else {
-            timeLimit = HARD_TIME_LIMIT;
+            timeLimit = Dificio;
         }
         return timeLimit;
     }
