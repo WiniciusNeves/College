@@ -15,6 +15,27 @@
         body {
             background-color: #7952b3;
         }
+        input{
+            align-items: center;
+            background-color: transparent;
+            color: white;
+            border: none;
+            margin-top: 2rem;
+            border-bottom: 2px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            width: 20rem;
+            position: relative;
+            left: 40%;
+        }
+
+        input:hover{
+            background-color: #553880;
+            color: white;
+            transition: 0.5s;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
@@ -44,7 +65,12 @@
             echo "Nenhum registro encontrado";
         }
         ?>
+
+        
     </div>
+        <div>
+            <a href="login.php"><input type="button" value="Voltar"></a>
+        </div>
 
 
 
