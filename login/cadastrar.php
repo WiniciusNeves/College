@@ -35,6 +35,15 @@
         a:hover{
             text-decoration: underline;
         }
+        #button{
+            align-items: center;
+            background-color: #7952b3;
+            color: white;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 </style>
 </head>
 
@@ -50,8 +59,8 @@
         <label for="senha">Senha:</label>
         <input type="password" name="senha" id="senha" required><br>
 
-        <input type="submit" value="Cadastrar" name="cadastrar">
-      <a href="login.php"><input type="button" value="Voltar"></a>
+        <input type="submit" id="button" value="Cadastrar" name="cadastrar">
+      <a href="login.php"><input id="button" type="button" value="Voltar"></a>
     </form>
 
     <?php
@@ -61,10 +70,11 @@
             $email = mysqli_real_escape_string($con, $_POST["email"]);
             $senha = mysqli_real_escape_string($con, md5($_POST["senha"]));
 
-            $sql = "INSERT INTO usuario (usuario, email, senha) VALUES ('$usuario', '$email','$senha')";
+            $sql = "INSERT INTO usuarios (usuario, email, senha) VALUES ('$usuario', '$email','$senha')";
 
             if ($con->query($sql) === TRUE) {
                 echo "Cadastrado com sucesso";
+                header("Location: login.php");
             } else {
                 echo "Erro ao cadastrar: " . $con->error;
             }
