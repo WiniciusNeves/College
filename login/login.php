@@ -25,6 +25,9 @@
             width: 15rem;
             padding: 10px;
             margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #7952b3;
+            outline: none;
         }
 
         a{
@@ -34,6 +37,16 @@
         }
         a:hover{
             text-decoration: underline;
+        }
+
+        #button{
+            align-items: center;
+            background-color: #7952b3;
+            color: white;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -47,9 +60,9 @@
         <label for="Senha">Senha:</label>
         <input type="password" name="senha" id="senha" required><br>
 
-        <input type="submit" value="Login" name="login">
+        <input type="submit" id="button" value="Login" name="login">
 
-        <a href="cadastrar.php"><input type="button" value="Cadastrar"></a>
+        <a href="cadastrar.php"><input id="button"type="button" value="Cadastrar"></a>
 
     </form>
     <?php
@@ -58,7 +71,7 @@
     if (isset($_POST['login'])) {
         $email = $_POST['email'];
         $senha = md5($_POST['senha']);
-        $sql = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
+        $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
         $result = $con->query($sql);
         
         if ($result->num_rows > 0) {
@@ -66,7 +79,6 @@
         } else {
             header("Location: cadastrar.php");
         }
-    
 
     }
     ?>
