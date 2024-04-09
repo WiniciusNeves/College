@@ -9,10 +9,9 @@
     <style>
         h1 {
             text-align: center;
-            color: black;
+            color: white;
             font-family: 'Roboto', sans-serif;
             font-size: 50px;
-            
         }
 
         body {
@@ -23,7 +22,7 @@
             height: 100vh;
         }
 
-        input{
+        input {
             align-items: center;
             background-color: transparent;
             color: white;
@@ -38,7 +37,7 @@
             left: 40%;
         }
 
-        input:hover{
+        input:hover {
             background-color: #553880;
             color: white;
             transition: 0.5s;
@@ -51,8 +50,15 @@
     <?php
     session_start();
     $usuario = isset($_SESSION["usuario"]) ? $_SESSION["usuario"] : "Usuário não definido";
+    
+    /*if (!isset($_SESSION["usuario"])) {
+        header("Location: login.php");
+        exit();
+    } else {
+        echo "<h1>Bem-vindo, $usuario</h1>";
+    }*/
     ?>
-    <h1>Relatório - <?php echo $usuario; ?></h1>
+    <h1>Relatório - <?php echo "Usuário: " . $usuario . "<br>"; ?></h1>
     <h1>Bem-vindo, aqui está o relatório de todos os usuários: </h1>
 
     <div style="background-color: #fff; width: 50%; margin: 0 auto; padding: 10px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
@@ -74,11 +80,11 @@
         }
         ?>
 
-        
+
     </div>
-        <div>
-            <a href="login.php"><input type="button" value="Voltar"></a>
-        </div>
+    <div>
+        <a href="login.php"><input type="button" value="Voltar"></a>
+    </div>
 
 
 
