@@ -66,7 +66,10 @@
 
 <body>
 
-    <form action="cadastrar.php" method="POST">
+
+
+    <form action="cadastrar.php" method="POST" style="margin-left: 20px;">
+        <h2>Criar</h2>
         <div class="divInput">
 
             <label for="usuario">Nome:</label>
@@ -80,23 +83,75 @@
         </div>
 
         <input type="submit" id="button" value="Cadastrar" name="cadastrar">
-        <a href="login.php"><input id="button" type="button" value="Voltar"></a>
+    </form>
+
+    <form action="cadastrar.php" method="POST" style="margin-left: 20px;">
+        <h2>Atualizar</h2>
+        <div class="divInput">
+            <label for="id">ID:</label>
+            <input type="number" name="id" id="id" required><br>
+
+            <label for="usuario">Nome:</label>
+            <input type="text" name="usuario" id="usuario" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required><br>
+        </div>
+
+        <input type="submit" id="button" value="Atualizar" name="atualizar">
+    </form>
+
+    <form action="cadastrar.php" method="POST" style="margin-left: 20px;">
+        <h2>Deletar</h2>
+        <div class="divInput">
+            <label for="id">ID:</label>
+            <input type="number" name="id" id="id" required><br>
+        </div>
+
+        <input type="submit" id="button" value="Deletar" name="deletar">
     </form>
 
     <?php
     include "config.php";
+
     if (isset($_POST["cadastrar"])) {
         $usuario = mysqli_real_escape_string($con, $_POST["usuario"]);
         $email = mysqli_real_escape_string($con, $_POST["email"]);
         $senha = mysqli_real_escape_string($con, md5($_POST["senha"]));
 
-        $sql = "INSERT INTO usuarios (usuario, email, senha) VALUES ('$usuario', '$email','$senha')";
+        $sql = "INSERT INTO usuario (usuario, email, senha) VALUES ('$usuario', '$email','$senha')";
 
         if ($con->query($sql) === TRUE) {
             echo "Cadastrado com sucesso";
             header("Location: login.php");
         } else {
             echo "Erro ao cadastrar: " . $con->error;
+        }
+
+    } else if (isset($_POST["atualizar"])) {
+        $id = mysqli_real_escape_string($con, $_POST["id"]);
+        $usuario = mysqli_real_escape_string($con, $_POST["usuario"]);
+        $email = mysqli_real_escape_string($con, $_POST["email"]);
+
+        $sql = "UPDATE usuario SET usuario = '$usuario', email = '$email' WHERE id = '$id'";
+
+        if ($con->query($sql) === TRUE) {
+            echo "Atualizado com sucesso";
+            header("Location: login.php");
+        } else {
+            echo "Erro ao atualizar: " . $con->error;
+        }
+
+    } else if (isset($_POST["deletar"])) {
+        $id = mysqli_real_escape_string($con, $_POST["id"]);
+
+        $sql = "DELETE FROM usuario WHERE id = '$id'";
+
+        if ($con->query($sql) === TRUE) {
+            echo "Deletado com sucesso";
+            header("Location: login.php");
+        } else {
+            echo "Erro ao deletar: " . $con->error;
         }
     }
     ?>
